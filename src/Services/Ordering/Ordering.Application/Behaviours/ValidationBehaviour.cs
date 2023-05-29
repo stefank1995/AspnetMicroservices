@@ -13,8 +13,7 @@ namespace Ordering.Application.Behaviours
             _validators = validators ?? throw new ArgumentNullException(nameof(validators));
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-            RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             if (_validators.Any())
             {
@@ -30,9 +29,6 @@ namespace Ordering.Application.Behaviours
             return await next();
         }
 
-        public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

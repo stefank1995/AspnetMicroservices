@@ -84,7 +84,6 @@ namespace Ordering.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("TotalPrice")
