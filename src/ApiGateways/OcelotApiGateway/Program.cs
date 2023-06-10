@@ -1,29 +1,41 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", true, true);
 
-//.net7 
-//builder.Logging.AddConsole();
-//builder.Logging.AddDebug();
-
-
-builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
-{
-    config.AddJsonFile($"ocelot.{hostingContext.HostingEnvironment}.json", true, true);
-});
-//.net6
-builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
-builder.Logging.AddConsole();
-builder.Logging.AddDebug();
-
-builder.Services.AddOcelot().AddCacheManager(settings => settings.WithDictionaryHandle());
-
+builder.Services.AddOcelot()
+          .AddCacheManager(settings => settings.WithDictionaryHandle());
 
 var app = builder.Build();
-
-await app.UseOcelot();
+await Configure();
 
 app.Run();
+
+
+
+async Task Configure()
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseRouting();
+
+    app.UseAuthorization();
+
+    app.UseEndpoints(endpoints =>
+    {
+        app.MapGet("/", () => "Hello World!");
+    });
+
+    await app.UseOcelot();
+}

@@ -125,6 +125,9 @@ services:
     container_name: ocelotapigw
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "ApiSettings:CatalogUrl=http://host.docker.internal:8000"
+      - "ApiSettings:BasketUrl=http://host.docker.internal:8001"
+      - "ApiSettings:OrderingUrl=http://host.docker.internal:8004"
     depends_on:
         - catalog.api
         - basket.api
@@ -132,6 +135,8 @@ services:
         - ordering.api
     ports:
       - "8010:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   shopping.aggregator:
     container_name: shopping.aggregator
