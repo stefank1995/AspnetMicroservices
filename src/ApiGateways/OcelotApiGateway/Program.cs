@@ -16,6 +16,8 @@ builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}
 builder.Services.AddOcelot()
           .AddCacheManager(settings => settings.WithDictionaryHandle());
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 await Configure();
 
@@ -36,14 +38,15 @@ async Task Configure()
 
     app.UseEndpoints(endpoints =>
     {
-        app.MapGet("/", () => "Hello World!");
+        endpoints.MapGet("/", () => "Hello World!");
+
+        endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+        {
+            Predicate = _ => true,
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
     });
 
-    app.MapHealthChecks("/hc", new HealthCheckOptions()
-    {
-        Predicate = _ => true,
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    });
 
     await app.UseOcelot();
 }

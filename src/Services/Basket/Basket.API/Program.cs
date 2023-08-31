@@ -17,6 +17,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetValue<String>("CacheSettings:ConnectionString");
+
+    //Adds prefix to all the keys so if multiple apps use the redis one doesnt overwrite the other
+    //options.InstanceName = "RedisDemo_";
 });
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddAutoMapper(typeof(Program));
