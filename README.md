@@ -4,6 +4,7 @@ ASP.NET Microservices Shopping App with Blazor and Razor Pages as two Client app
 
 ### Microservices Architecture
 Microservices architecture is an approach to designing and building software applications as a collection of loosely coupled, independently deployable services. This architectural style offers numerous benefits that can enhance the development, deployment, scalability, and maintainability of software systems. 
+This apps architecture is shown below:
 ![MicroservicesApp](https://github.com/stefank1995/aspnet-microservices/assets/132662524/68d392d5-4471-41e0-8282-557923e5c46f)
 
 
@@ -18,6 +19,7 @@ Microservices architecture is an approach to designing and building software app
 * [Redis](https://redis.io/) - Used to cache data from the basket
 * [OcelotAPI](https://ocelot.readthedocs.io/en/latest/introduction/gettingstarted.html) - Used as a gateway service
 * [RabbitMQ](https://www.rabbitmq.com/) - Used as a message-broker between BasketAPI and OrderingAPI
+* [Docker](https://www.docker.com/) - Used for containerization
 
 
 
