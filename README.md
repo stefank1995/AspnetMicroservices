@@ -1,6 +1,7 @@
 # AspnetMicroservices
 
 ASP.NET Microservices Shopping App with Blazor and Razor Pages as two Client apps communicating through Ocelot API as a gateway(+aggregator) with the APIs that use RabbitMQ as a message-broker, Redis for Cache, MongoDB, PostgreSQL, SQL Server as databases, Dapper and Entity Framework as ORMs, Docker for containerization
+![image](https://github.com/stefank1995/aspnet-microservices/assets/132662524/89040a82-85fb-47b8-81f4-e7bdc0432a72)
 
 ### Microservices Architecture
 Microservices architecture is an approach to designing and building software applications as a collection of loosely coupled, independently deployable services. This architectural style offers numerous benefits that can enhance the development, deployment, scalability, and maintainability of software systems. 
