@@ -4,7 +4,7 @@ ASP.NET Microservices Shopping App with Blazor and Razor Pages as two Client app
 ![image](https://github.com/stefank1995/aspnet-microservices/assets/132662524/89040a82-85fb-47b8-81f4-e7bdc0432a72)
 
 ### Microservices Architecture
-Microservices architecture is an approach to designing and building software applications as a collection of loosely coupled, independently deployable services. This architectural style offers numerous benefits that can enhance the development, deployment, scalability, and maintainability of software systems. 
+Microservices architecture is an approach to designing and building software applications as a collection of loosely coupled, independently deployable services. This architectural style offers numerous benefits(but also drawbacks) that can enhance(or slow down) the development, deployment, scalability, and maintainability of software systems. 
 This apps architecture is shown below:
 ![MicroservicesApp](https://github.com/stefank1995/aspnet-microservices/assets/132662524/68d392d5-4471-41e0-8282-557923e5c46f)
 
